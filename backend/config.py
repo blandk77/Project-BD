@@ -11,4 +11,4 @@ mongodb_uri = os.environ.get("MONGODB_URI")
 mongodb_database_name = "Black-Dot" 
 
 # Base URL for shortened links (replace with your Koyeb app URL or custom domain)
-base_url = os.environ.get("BASE_URL", "http://localhost:5000")
+base_url = os.environ.get("BASE_URL", "https://unable-annadiane-tg-guy-eb37d8a5.koyeb.app/")

@@ -1,21 +1,16 @@
 from flask import Flask, request, jsonify, redirect
-from flask_cors import CORS  # For handling Cross-Origin Resource Sharing
+from flask_cors import CORS
 import config
 import utils
 import pymongo
-from urllib.parse import quote_plus
 
 app = Flask(__name__)
-CORS(app)  # Enable CORS for all routes (for development)
+CORS(app) 
 
-# MongoDB Setup
-username = quote_plus(config.mongodb_username)
-password = quote_plus(config.mongodb_password)
-mongo_uri = f"mongodb+srv://{username}:{password}@{config.mongodb_cluster_url}/?retryWrites=true&w=majority"
-
-client = pymongo.MongoClient(mongo_uri)
+client = pymongo.MongoClient(config.mongodb_uri)
 db = client[config.mongodb_database_name]
 urls_collection = db["urls"]
+
 
 
 @app.route("/api/shorten", methods=["POST"])
